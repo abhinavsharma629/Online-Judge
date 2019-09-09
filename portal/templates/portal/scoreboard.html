@@ -1,0 +1,49 @@
+{% extends 'adminmainbase.html' %} {% load crispy_forms_tags %} {% load static
+%} {% block body %}
+      <div class="container text-center">
+        <h1><b>Judging Panel</b></h1>
+      </div>
+      <br />
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col" width="20%" class="text-center">Rank</th>
+            <th scope="col" width="40%" class="text-center">Enrollment Number</th>
+            <th scope="col" width="40%" class="text-center">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in submissions %}
+          <tr>
+            <td align="center">
+              {{ forloop.counter }}
+            </td>
+            <td align="center">
+              {{ i.s_id }}
+            </td>
+            <td align="center">
+              <b>{{ i.score }}</b>
+            </td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+
+      <br />
+    </div>
+    <br />
+    <b>
+      <div class="text-center p-t-40" style="font-size: 20px;">
+        Developer :- Abhinav Sharma
+        <a
+          href="https://www.facebook.com/abhinav.sharma.16906"
+          class="fa fa-facebook"
+        ></a>
+      </div>
+    </b>
+<script type="text/javascript">
+console.log(document.getElementById("active"));
+  document.getElementById("active").setAttribute("class", "nav-item");
+  document.getElementById("nav-item1").setAttribute("class", "nav-item active");
+</script>
+{% endblock %}

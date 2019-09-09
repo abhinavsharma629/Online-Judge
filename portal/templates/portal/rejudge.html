@@ -1,0 +1,89 @@
+{% extends 'adminmainbase.html' %} {% load crispy_forms_tags %} {% load static
+    %} {% block body %}
+    
+          <div class="container text-center">
+            <h1><b>Judging Panel</b></h1>
+          </div>
+          <br />
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Submission ID</th>
+                <th scope="col" class="text-center">Problem ID</th>
+                <th scope="col" class="text-center">Status</th>
+                <th scope="col" class="text-center">Compare Output</th>
+                <th scope="col" class="text-center">Source Code</th>
+                <th scope="col" class="text-center">&nbsp;&nbsp;ReJudge</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in recent %}
+                <tr bgcolor="#7CFC00">
+                  <td align="center">
+                    {{ i.given_s_id }}
+                  </td>
+                  <td align="center">
+                    {{ i.p_id }}
+                  </td>
+                  <td align="center">
+                    <b>{{ i.status }}</b>
+                  </td>
+                  <td align="center">
+                    <a href="/submissionDetails/{{ i.sub_id }}">{{ i.sub_id }}</a>
+                  </td>
+                  <td align="center">
+                    <a href="/detail/user/{{ i.sub_id }}/0"
+                      >&nbsp; Open Source Code</a
+                    >
+                  </td>
+                  <td align="center">
+                    <a href="/rejudge/{{i.sub_id}}"><button class="btn btn-danger"><b>ReJudge</b></button></a>
+                  </td>
+                </tr>
+                {% endfor %}
+
+              {% for i in rejudge %}
+              <tr>
+                <td align="center">
+                  {{ i.given_s_id }}
+                </td>
+                <td align="center">
+                  {{ i.p_id }}
+                </td>
+                <td align="center">
+                  <b>{{ i.status }}</b>
+                </td>
+                <td align="center">
+                  <a href="/submissionDetails/{{ i.sub_id }}">{{ i.sub_id }}</a>
+                </td>
+                <td align="center">
+                  <a href="/detail/user/{{ i.sub_id }}/0"
+                    >&nbsp; Open Source Code</a
+                  >
+                </td>
+                <td align="center">
+                  <a href="/rejudge/{{i.sub_id}}"><button class="btn btn-danger"><b>ReJudge</b></button></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    
+          <br />
+        </div>
+        <br />
+        <b>
+          <div class="text-center p-t-40" style="font-size: 20px;">
+            Developer :- Abhinav Sharma
+            <a
+              href="https://www.facebook.com/abhinav.sharma.16906"
+              class="fa fa-facebook"
+            ></a>
+          </div>
+        </b>
+    <script type="text/javascript">
+      document.getElementById("active").setAttribute("class", "nav-item");
+      document.getElementById("nav-item3").setAttribute("class", "nav-item active");
+    </script>
+    {% endblock %}
+    

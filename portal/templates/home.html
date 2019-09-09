@@ -1,0 +1,68 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    {% block head %}
+    <title>Kodeathon</title>
+    <SCRIPT type="text/javascript">
+      function preventBack(){window.history.forward();}
+      setTimeout("preventBack()", 0); window.onunload=function(){null};
+    </SCRIPT>
+    <style>
+      #list p {
+        font: arial;
+        font-size: 15px;
+      }
+      #hover-content {
+        display: none;
+      }
+      #parent:hover #hover-content {
+        display: block;
+      }
+    </style>
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"><b>Kodeathon</b></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/submit"
+              >Submit<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/status">Status</a>
+          </li>
+        </ul>
+        <a id="name" class="nav-link" href="#"
+          ><b>{{ name }}</b></a
+        >
+      </div>
+    </nav>
+    {% block body %} {% endblock %}
+  </body>
+</html>

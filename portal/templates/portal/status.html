@@ -1,0 +1,66 @@
+{% extends 'home.html' %} {% load crispy_forms_tags %} {% block body %}
+<div class="container" style="justify-content:center; margin-top:0%;">
+  <div class="container text-center">
+    <div class="container text-center">
+      <div class="page-header">
+        <h1><b>Status</b></h1>
+      </div>
+      <br />
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Submission ID</th>
+            <th scope="col">Status</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        {% for i in data %}
+        <tbody>
+          <tr>
+            <td>
+              {{ i.given_s_id }}
+            </td>
+            <td>
+              {{ i.status }}
+            </td>
+            <td>
+              <div id="parent">
+                <a href="/detail/user/{{ i.sub_id }}/0">{{ i.sub_id }}</a>
+                <div id="hover-content">
+                    <div id="list" class="container">
+                        <p>
+                          <iframe
+                            src="../../../media/{{ i.solution.name }}"
+                            frameborder="10"
+                            height="400"
+                            width="90%"
+                            style="background: #FFFFFF;"
+                          ></iframe>
+                        </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+
+      <br />
+    </div>
+    <br />
+    <b>
+      <div class="text-center p-t-40" style="font-size: 20px;">
+        Developer :- Abhinav Sharma
+        <a
+          href="https://www.facebook.com/abhinav.sharma.16906"
+          class="fa fa-facebook"
+        ></a>
+      </div>
+    </b>
+  </div>
+</div>
+<script type="text/javascript">
+  document.getElementById("active").setAttribute("class", "nav-item");
+  document.getElementById("nav-item").setAttribute("class", "nav-item active");
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'adminmainbase.html' %} {% load crispy_forms_tags %} {% block body %}
+<p>&nbsp;</p>
+<div class="container text-center">
+  <h3>
+    <b>{{ file }}</b>
+  </h3>
+</div>
+<p>&nbsp;</p>
+<div id="list" class="container">
+  <p>
+    <iframe
+      src="/media/portal/{{ file }}"
+      class="embed"
+      frameborder="10"
+      height="400"
+      width="90%"
+    ></iframe>
+    <!-- <object
+      data="/media/portal/{{ file }}"
+      frameborder="10"
+      height="400"
+      width="90%"
+    >
+    </object>
+    -->
+  </p>
+</div>
+{% endblock %}

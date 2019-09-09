@@ -1,0 +1,70 @@
+{% extends 'home.html' %} {% load crispy_forms_tags %} {% block body %}
+<br />
+<div class="container">
+  <div class="container text-center">
+    <h3><b>Submit Your Solution</b></h3>
+  </div>
+  <br />
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="div_id_p_id" class="form-group">
+      <label for="id_p_id" class="control-label  requiredField">
+        <b>Problem Number</b><span class="asteriskField">*</span>
+      </label>
+      <div class="controls " style="width:200px;">
+        <select name="p_id" class="select form-control" id="id_p_id">
+          <option value="1"><b>1</b></option>
+          <option value="2"><b>2</b></option>
+          <option value="3"><b>3</b></option>
+          <option value="4"><b>4</b></option>
+          <option value="4"><b>5</b></option>
+          <option value="4"><b>6</b></option>
+        </select>
+      </div>
+    </div>
+    <div id="div_id_submission_file" class="form-group">
+      <label for="id_submission_file" class="control-label  requiredField">
+        <b>Submission file</b><span class="asteriskField">*</span>
+      </label>
+      <div class="controls ">
+        <input
+          type="file"
+          name="submission_file"
+          class="clearablefileinput"
+          required=""
+          id="id_submission_file"
+        />
+      </div>
+    </div>
+    <div id="div_id_language_choice" class="form-group">
+      <label for="id_language_choice" class="control-label  requiredField">
+        <b>Language choice</b><span class="asteriskField">*</span>
+      </label>
+      <div class="controls " style="width:200px;">
+        <select
+          name="language_choice"
+          class="select form-control"
+          id="id_language_choice"
+        >
+          <option value="1"><b>JAVA</b></option>
+          <option value="2"><b>C++</b></option>
+          <option value="3"><b>C</b></option>
+          <option value="4"><b>PYTHON 3.6</b></option>
+        </select>
+      </div>
+    </div>
+    <div class="container">
+      <button class="btn btn-default">
+        <b>Submit</b>
+      </button>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+  if ("{{message}}") {
+    message = "{{message}}";
+    alert(message);
+    window.location.href = "/status";
+  }
+</script>
+{% endblock %}

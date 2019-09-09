@@ -1,0 +1,130 @@
+{% extends 'adminmainbase.html' %} {% load crispy_forms_tags %} {% load static
+   %} {% block head %}
+   <style>
+
+      mark {
+      background-color: lightgreen;
+      color: black;
+      }
+      .mark1 {
+      background-color: lightcoral;
+      color: black;
+      }
+
+      .mark2 {
+      background-color: white;
+      color: black;
+      }
+     
+      .left{
+      position: relative;
+      margin-left: -400px;
+      float:left;
+      width:85%;
+      }
+      .leftm{
+      position: absolute;
+      margin-left: 4px;
+      width:4%;
+      }
+
+      .right{
+      float:right;
+      position: relative;
+      margin-right: -400px;
+      width:85%;}
+
+      .rightm{
+      position: absolute;
+      margin-left: -20px;
+      width:2%;
+      }
+
+      .vl {
+        border-left: 2px solid black;
+        height: 100%;
+        position: absolute;
+        width: 0;
+        margin-left: 520px;
+     }
+   </style>
+   {% endblock %}
+   {% block body %}
+   <div class="container" style="justify-content:center; margin-top:0%;">
+      <div class="container text-center">
+         <div class="container text-center">
+            <div class="page-header">
+               <h1><b>Output Comparison</b></h1>
+               <hr>
+               <h5>
+
+                   <p class="text-danger"><b>Similar Lines:- {{similar}}</b></p>
+                   <p class="text-danger"><b>Different Lines:- {{different}}</b></p>
+               </h5>
+               <hr>
+           </div>
+           <br />
+           <br />
+           
+            <div class="left" >
+               <h5><b>Original Output</b></h5>
+               <hr>
+               <p>
+                  {% for i in comparison %}
+               <p class="leftm"><b>{{ forloop.counter }}</b></p>
+               <p><mark id="putNum-{{ forloop.counter }}">{{i}}</mark>&nbsp; <i id="fa-{{ forloop.counter }}" class="fa fa-check"></i></p>
+               <!-- <p id="putNum-{{ forloop.counter }}" ></p> -->
+              
+               <hr>
+               {% endfor %}
+               </p>
+            </div>
+            
+            <div class="right">
+                   <h5><b>User Output</b></h5>
+                   <hr>
+               <p>
+                  {% for i in comparison1 %}
+               <p class="rightm"><b>{{ forloop.counter }}</b></p>
+               
+               <p><mark id="putNum1-{{ forloop.counter }}" class="mark1">{{i}}</mark>&nbsp; <i id="fa1-{{ forloop.counter }}" class="fa fa-remove"></i></p>
+               <hr>
+               {% endfor %}
+               </p>
+               
+            </div>
+            <div class="vl"></div>
+         </div>
+      </div>
+   </div>
+   <script>
+
+      var array = {{difference}} ;
+         
+      for (i = 0; i < (document.getElementsByClassName('leftm')).length;i++)
+      {
+         if(array[i]==1)
+            document.getElementById('fa-'+String(i+1)).setAttribute("class","fa fa-check");
+         else
+         {
+               //(document.getElementById('putNum-'+String(i))).parentNode.removeChild(document.getElementById('putNum-'+String(i)));
+               document.getElementById('fa-'+String(i+1)).removeAttribute("class");
+               document.getElementById('putNum-'+String(i+1)).setAttribute("class", "mark2");
+         }
+
+      }
+
+      for (i = 0; i < (document.getElementsByClassName('rightm')).length;i++)
+      {
+         //console.log(i);
+         if(array[i]==1)
+            document.getElementById('fa1-'+String(i+1)).setAttribute("class","fa fa-remove");
+         else
+            {
+               //(document.getElementById('putNum1-'+String(i))).parentNode.removeChild(document.getElementById('putNum1-'+String(i)));
+               document.getElementById('fa1-'+String(i+1)).removeAttribute("class");
+               document.getElementById('putNum1-'+String(i+1)).setAttribute("class", "mark2");
+            }
+      }
+   </script>
+   {% endblock %}

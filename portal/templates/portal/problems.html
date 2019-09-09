@@ -1,0 +1,34 @@
+{% extends 'adminmainbase.html' %} {% load crispy_forms_tags %} {% load static
+%} {% block body %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Problem Name</th>
+      <th scope="col">Problem Statement</th>
+      <th scope="col">Input File</th>
+      <th scope="col">Output File</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in problems %}
+    <tr>
+      <td scope="row">
+        <b>{{ forloop.counter }}</b>
+      </td>
+      <td>
+        <b>{{ i.p_name }}</b>
+      </td>
+      <td><a href="/detail/admin/{{ i.p_id }}/1">Problem Statement</a></td>
+      <td><a href="/detail/admin/{{ i.p_id }}/2">Problem Input</a></td>
+      <td><a href="/detail/admin/{{ i.p_id }}/3">Problem Output</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script type="text/javascript">
+  console.log(document.getElementById("active"));
+  document.getElementById("active").setAttribute("class", "nav-item");
+  document.getElementById("nav-item2").setAttribute("class", "nav-item active");
+</script>
+{% endblock %}
